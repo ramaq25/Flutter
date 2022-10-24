@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome!",
+  "username": "Username / Email",
+  "password": "Password",
+  "forgot_pw": "Forgot Password?",
+  "login_btn": "Login",
+  "no_account": "Don't have an account?",
+  "register": "Register",
+  "name": "Name",
+  "age": "Age",
+  "sign_up": "Sign Up",
+  "already_register": "Already a Member?"
+}

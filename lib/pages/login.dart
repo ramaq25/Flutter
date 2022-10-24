@@ -1,22 +1,29 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:project_4/main.dart';
+import 'package:project_4/pages/register.dart';
+import 'package:project_4/pages/language.dart';
+import 'package:project_4/pages/welcome_page.dart';
+import 'package:project_4/translations/locale_keys.g.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
       routes: {
+        '/': (context) => const InitialPage(),
         '/first': (context) => const FirstPage(),
-        '/register': (context) => const SecondPage()
+        '/register': (context) => const SecondPage(),
+        '/welcome': (context) => const WelcomePage()
       },
     );
   }
 }
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
+class FirstPage extends StatelessWidget {
+  const FirstPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +42,15 @@ class SecondPage extends StatelessWidget {
                 )),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Padding(
-                  padding: EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(7),
                   child: Text(
-                    'REGISTER PAGE',
-                    style: TextStyle(fontSize: 35, color: Colors.white),
+                    LocaleKeys.welcome.tr(),
+                    style: const TextStyle(fontSize: 35, color: Colors.white),
                   ),
                 ),
-                RegisterBox()
+                 const LoginBox()
               ],
             )),
       ),
@@ -52,14 +59,14 @@ class SecondPage extends StatelessWidget {
 }
 
 
-class RegisterBox extends StatelessWidget {
-  const RegisterBox({Key? key}) : super(key: key);
+class LoginBox extends StatelessWidget {
+  const LoginBox({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 300,
-      height: 420,
+      height: 350,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -74,48 +81,34 @@ class RegisterBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 25, top: 45, right: 25, bottom: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 45, right: 25, bottom: 15),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.abc),
+                prefixIcon: const Icon(Icons.mail),
                 border: OutlineInputBorder(
-                    // borderRadius: BorderRadius.circular(50)
-                    ),
-                hintText: 'Name',
+                  borderRadius: BorderRadius.circular(50)
+                ),
+                hintText: LocaleKeys.username.tr(),
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 5),
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.numbers),
-                border: OutlineInputBorder(),
-                hintText: 'Age',
+                prefixIcon: const Icon(Icons.password),
+                border: const OutlineInputBorder(),
+                hintText: LocaleKeys.password.tr(),
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.mail),
-                border: OutlineInputBorder(),
-                hintText: 'Username / Email',
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 25, top: 0, right: 25, bottom: 8),
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.password),
-                border: OutlineInputBorder(),
-                hintText: 'Password',
-              ),
-            ),
-          ),
+          Padding(
+              padding: const EdgeInsets.only(left: 25, top: 0, right: 15, bottom: 15),
+              child: Text(
+                LocaleKeys.forgot_pw.tr(),
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              )),
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -123,20 +116,18 @@ class RegisterBox extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              onPressed: () {},
-              child: const Text('Sign Up'),
+              onPressed: () {Navigator.pushNamed(context, '/welcome');},
+              child: Text(LocaleKeys.login_btn.tr()),
             ),
           ),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Already A Member?'),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/first');
-                    },
-                    child: const Text('Sign Up'))
+                Text(LocaleKeys.no_account.tr()),
+                TextButton(onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                }, child: Text(LocaleKeys.register.tr()))
               ],
             ),
           )
