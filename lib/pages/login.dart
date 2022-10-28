@@ -76,7 +76,7 @@ class LoginBox extends StatelessWidget {
             Colors.white60,
           ],
         ),
-        borderRadius: BorderRadius.all(Radius.circular(15)),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +98,9 @@ class LoginBox extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.password),
-                border: const OutlineInputBorder(),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50)
+                ),
                 hintText: LocaleKeys.password.tr(),
               ),
             ),

@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:project_4/pages/menu/map_page.dart';
+import 'package:project_4/pages/menu/qr_page.dart';
 import '../translations/locale_keys.g.dart';
 import 'menu/home_page.dart';
-import 'menu/like_page.dart';
 import 'menu/profile_page.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -16,7 +17,8 @@ class _WelcomePageState extends State<WelcomePage> {
   int _currentIndex = 0;
   List pages = const [
     HomePage(),
-    LikePage(),
+    QRPage(),
+    MapPage(),
     ProfilePage()
   ];
 
@@ -45,9 +47,14 @@ class _WelcomePageState extends State<WelcomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            activeIcon: Icon(Icons.favorite),
-            label: 'Likes',
+            icon: Icon(Icons.qr_code_outlined),
+            activeIcon: Icon(Icons.qr_code),
+            label: 'QR',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined),
+            activeIcon: Icon(Icons.map),
+            label: 'Map',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
